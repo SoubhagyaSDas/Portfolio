@@ -3,6 +3,31 @@
 const nameInput = document.querySelector('input[name="fullname"]');
 const subjectInput = document.querySelector('input[name="subject"');
 
+// CHANGE 
+// document.addEventListener("DOMContentLoaded", function () {
+//     const toggle = document.getElementById("modeToggle");
+
+//     // Check local storage for saved mode
+//     const savedMode = localStorage.getItem("mode");
+//     if (savedMode) {
+//         document.body.classList.add(savedMode);
+//         toggle.checked = savedMode === "dark-mode";
+//     }
+
+//     toggle.addEventListener("change", function () {
+//         if (toggle.checked) {
+//             document.body.classList.add("dark-mode");
+//             document.body.classList.remove("light-mode");
+//             localStorage.setItem("mode", "dark-mode");
+//         } else {
+//             document.body.classList.add("light-mode");
+//             document.body.classList.remove("dark-mode");
+//             localStorage.setItem("mode", "light-mode");
+//         }
+//     });
+// });
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
