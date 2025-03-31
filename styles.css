@@ -804,4 +804,43 @@ section {
     pointer-events: none;
 }
 
+.nav-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    color: var(--primary-text);
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        z-index: 1001;
+    }
+
+    .nav-center {
+        flex-direction: column;
+        background-color: var(--secondary-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 0 2rem;
+        gap: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    
+    .nav-center.active {
+        padding: 1rem 2rem;
+        max-height: 500px; /* adjust based on content */
+        opacity: 1;
+    }
+}
 
