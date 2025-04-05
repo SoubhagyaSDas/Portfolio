@@ -806,14 +806,15 @@ section {
 
 .nav-toggle {
     display: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: 1;
     background: none;
     color: var(--primary-text);
     border: none;
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .nav-toggle {
         display: block;
         position: absolute;
@@ -839,7 +840,163 @@ section {
     
     .nav-center.active {
         padding: 1rem 2rem;
-        max-height: 500px; /* adjust based on content */
+        max-height: 200px; 
+        opacity: 1;
+    }
+} */
+
+.highlight-role {
+    color: #ffb700;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(190, 148, 22, 0.6);
+}
+
+/*Ensure nav-left never clips its content*/
+.nav-left.flip-wrapper {
+    display: flex;
+    align-items: center;
+    min-width: max-content;
+    height: 50px;
+    padding: 0 12px;
+    z-index: 1;
+    position: relative;
+}
+
+
+/* Flip container and inner */
+.flip-container {
+    perspective: 1000px;
+    height: 100%;
+}
+
+.flip-inner {
+    position: relative;
+    width: max-content;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: flipX 12s ease-in-out infinite;
+}
+
+/* Front and back sides */
+.flip-front, .flip-back {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+    white-space: nowrap;
+}
+
+.flip-back {
+    transform: rotateX(180deg);
+}
+
+.logo-img {
+    height: 150px;
+    width: auto;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
+}
+
+/* Flip animation */
+@keyframes flipX {
+    0% {
+        transform: rotateX(0deg);
+    }
+    40% {
+        transform: rotateX(0deg); 
+    }
+    50% {
+        transform: rotateX(180deg); 
+    }
+    90% {
+        transform: rotateX(180deg); 
+    }
+    100% {
+        transform: rotateX(360deg); 
+    }
+} 
+
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding: 0 15px;
+        width: 100%;
+        height: auto;
+        min-height: 50px;
+    }
+    
+    .nav-left.flip-wrapper {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        height: auto;
+        min-height: 40px;
+        padding: 5px 0;
+    }
+    
+    .nav-toggle {
+        display: flex; /* Changed from block to flex */
+        position: absolute;
+        top: 0.7rem; /* Adjusted to move it up */
+        right: 1.5rem;
+        z-index: 1001;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Disable the flip animation */
+    .flip-inner {
+        animation: none;
+        transform: rotateX(0deg);
+        height: auto;
+    }
+    
+    .flip-back {
+        display: none;
+    }
+    
+    .flip-front {
+        position: static;
+        backface-visibility: visible;
+        font-size: 1.2rem;
+        padding: 8px 0;
+        height: auto;
+    }
+    
+    .flip-container {
+        height: auto;
+    }
+
+    /* Keep your existing nav-center styles */
+    .nav-center {
+        flex-direction: column;
+        background-color: var(--secondary-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 0 2rem;
+        gap: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    
+    .nav-center.active {
+        padding: 1rem 2rem;
+        max-height: 500px;
         opacity: 1;
     }
 }
