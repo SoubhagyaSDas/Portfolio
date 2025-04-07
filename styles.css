@@ -874,7 +874,7 @@ section {
     width: max-content;
     height: 100%;
     transform-style: preserve-3d;
-    animation: flipX 12s ease-in-out infinite;
+    animation: flipX 8s ease-in-out infinite;
 }
 
 /* Front and back sides */
